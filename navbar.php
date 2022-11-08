@@ -16,6 +16,10 @@
       <li class="nav-item rounded-pill">
         <a class="nav-link text-light fs-5" href="fav.php"> <i class="fa-solid fa-heart"></i> Favorites</a>
       </li>
+      <li class="nav-item rounded-pill">
+        <a class="nav-link text-light fs-5" href="info.php"> <i class="fa-solid fa-chart-simple"></i> More info</a>
+      </li>
+      
     </ul>
   </div>
 
