@@ -20,6 +20,6 @@
   </div>
 
   <div class="justify-content-">
-        <span class="fs-6"> Welcome Sathish!</span>
+        <span class="fs-6"> Welcome <?php echo $name; ?>!</span>
     </div>
 </nav>

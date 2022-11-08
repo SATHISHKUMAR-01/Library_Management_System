@@ -1,4 +1,10 @@
-<?php ?>
+<?php 
+session_start();
+include('config/connect.php');
+
+$name =  $_SESSION['name'];
+
+?>
 
 
 <html>
@@ -66,6 +72,7 @@
            
             <p class="fs-5 text-secondary"> Pending books to be return </p>
             <hr>
+            
 
             <table id="example" class="display nowrap" style="width:100%">
             <thead>

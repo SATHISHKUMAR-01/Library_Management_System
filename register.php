@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
     $mail->Body    = "<h1>Hello ".$name."</h1><br/> Your registration for library management is successfull <br/> <h2>Your ID is : ".$user_id."<br/> Your email id : ".$email."</h2> <br/> ";
 
     $mail->send();
-    
+    $_SESSION['name'] = $name; 
     header("Location: dashboard.php");
 
     }else{

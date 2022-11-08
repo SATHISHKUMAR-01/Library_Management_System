@@ -18,7 +18,8 @@ if (isset($_POST['login'])) {
     $result   = mysqli_query($conn, $query);
     $rows = mysqli_num_rows($result);
   
-   
+    $name = $result->fetch_array()['name'];
+
     if ($rows == 1) {
         $_SESSION['name'] = $name; 
         header("Location: dashboard.php");
