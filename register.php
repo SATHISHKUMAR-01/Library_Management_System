@@ -3,6 +3,14 @@
 session_start();
 include('config/connect.php');
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+require './vendor/autoload.php';
+$mail = new PHPMailer(true);
+
+
 $name = $email =  $password = $conf_password = $user_id = ' ';
 if (isset($_POST['login'])) {
 
@@ -25,10 +33,6 @@ if (isset($_POST['login'])) {
     $query    = "INSERT INTO login (user_id,name,email,password,confirm_password)VALUES
     ('$user_id', '$name', '$email' ,'$password', '$conf_password')"; 
     $result   = mysqli_query($conn, $query);
-
-
-
-
     
     $query    = "SELECT * FROM login WHERE email='$email' AND  password='$password'"; 
     $result   = mysqli_query($conn, $query);
@@ -36,7 +40,27 @@ if (isset($_POST['login'])) {
   
    
     if ($rows == 1) {
-        header("Location: dashboard.php");
+
+        
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'sathishkandavel10@gmail.com';                     //SMTP username
+    $mail->Password   = 'dprcwnknjoqaqwbp';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption PHPMailer::ENCRYPTION_SMTPS
+    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    $mail->setFrom('sathishkandavel10@gmail.com', 'Admin - Library Management');
+    $mail->addAddress($email, $name);     //Add a recipient
+
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Library Management Registration ---  Successfull';
+    $mail->Body    = "<h1>Hello .".$name."</h1><br/> Your registration for library management is successfull <br/> <h2>Your ID is : ".$user_id."<br/> Your email id : ".$email."</h2> <br/> ";
+
+    $mail->send();
+    
+    header("Location: dashboard.php");
+
     }else{
         header("Location: register.php");
     }
