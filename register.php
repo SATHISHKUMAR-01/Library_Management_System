@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title> Login Page </title>
+        <title> Register Page </title>
         <?php include('header.php') ?>
         <style>
             #login{
@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-6 p-2">
                     
-                    <h1 class="fs-1 text-center text-secondary">Lets gain Knowledge <i class="fa-solid fa-book"></i> </h1> 
+                    <h1 class="fs-1 text-center text-secondary">Let's gain Knowledge <i class="fa-solid fa-book"></i> </h1> 
                  <br>
                     <form action="" method="POST" class="m-2">
                     
