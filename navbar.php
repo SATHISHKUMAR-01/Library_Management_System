@@ -13,6 +13,9 @@
       <li class="nav-item rounded-pill">
         <a class="nav-link text-light fs-5" href="return.php"> <i class="fa-solid fa-check-double"></i> Returned Books</a>
       </li>
+      <li class="nav-item rounded-pill">
+        <a class="nav-link text-light fs-5" href="fav.php"> <i class="fa-solid fa-heart"></i> Favorites</a>
+      </li>
     </ul>
   </div>
 

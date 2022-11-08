@@ -3,7 +3,7 @@
 
 <html>
     <head>
-        <title> Return </title>
+        <title> Favorites</title>
         <?php include('header.php') ?>
         <style>
            
@@ -12,13 +12,11 @@
 
 <script>
             $(document).ready(function() {
-    $('#return').DataTable( {
+    $('#fav').DataTable( {
         dom: 'Qlfrtip'
     });
 });
         </script>
-
-       
 
     </head>
     <body >
@@ -26,12 +24,12 @@
         <br><br><br> 
         <div class="container">
 
-        <p class="fs-4 text-secondary pt-2 text-center"> List of all Returned Books</p>
+        <p class="fs-4 text-secondary pt-2 text-center"> Your Favorite Books</p>
         <hr>
 
 
         
-        <table id="return" class="display nowrap" style="width:100%">
+        <table id="fav" class="display nowrap" style="width:100%">
             <thead>
             <tr> <th>ISBN No</th>
                 <th>Title</th>
@@ -50,12 +48,17 @@
                 <td>System Architect</td>
                 <td><span>Edinburgh</span></td>
                 <td><span class="old">61</span></td>
-                <td> <button class="btn btn-warning"> Borrow </button></td>
+                <td> <button class="btn btn-danger"> Remove from favorites</button></td>
                
                 
               </tr>
         </table>
             
+            
+
+
+
+
             
 
 
