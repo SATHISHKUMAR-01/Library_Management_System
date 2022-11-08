@@ -1,4 +1,50 @@
-<?php ?>
+<?php 
+
+session_start();
+include('config/connect.php');
+
+$name = $email =  $password = $conf_password = $user_id = ' ';
+if (isset($_POST['login'])) {
+
+
+    $name = stripslashes($_REQUEST['name']);
+    $name = mysqli_real_escape_string($conn, $name);
+    
+    $email = stripslashes($_REQUEST['email']);
+    $email = mysqli_real_escape_string($conn, $email);
+
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($conn, $password);
+
+    $conf_password = stripslashes($_REQUEST['conf_password']);
+    $conf_password = mysqli_real_escape_string($conn, $conf_password);
+
+    $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+    $user_id =  substr(str_shuffle($data), 0, 8);
+
+    $query    = "INSERT INTO login (user_id,name,email,password,confirm_password)VALUES
+    ('$user_id', '$name', '$email' ,'$password', '$conf_password')"; 
+    $result   = mysqli_query($conn, $query);
+
+
+
+
+    
+    $query    = "SELECT * FROM login WHERE email='$email' AND  password='$password'"; 
+    $result   = mysqli_query($conn, $query);
+    $rows = mysqli_num_rows($result);
+  
+   
+    if ($rows == 1) {
+        header("Location: dashboard.php");
+    }else{
+        header("Location: register.php");
+    }
+}
+
+
+
+?>
 
 
 <html>
@@ -7,7 +53,6 @@
         <?php include('header.php') ?>
         <style>
             #login{
-                /* background-image: linear-gradient(to bottom, #bcf2f2, #c3f1f1, #caf0f0, #d1efef, #d7eeee); */
                 background-image : url('./images/bookshelf.jpeg')
             }
             #register_card{
