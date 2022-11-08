@@ -70,7 +70,7 @@ while($row = mysqli_fetch_array($res))
                 <td> <?php echo $row['subject']; ?> </td>
                 <td> <?php echo $row['year']; ?> </td>
                 <td> <button class="btn btn-warning"> Borrow </button></td>
-                <td> <button class="btn btn-primary"> Add to Favorites </button></td>
+                <td> <button class="btn btn-primary"> <a href="update.php?isbn=<?php echo $row['isbn'] ?>" class="text-decoration-none text-light" > Add to Favorites </a> </button></td>
                 
               </tr>
 
