@@ -22,4 +22,6 @@
   <div class="justify-content-">
         <span class="fs-6"> Welcome <?php echo $name; ?>!</span>
     </div>
+    <a class="nav-link text-light float-end text-warning fs-3" href="logout.php">  <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+ 
 </nav>
