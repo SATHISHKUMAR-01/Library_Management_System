@@ -4,7 +4,7 @@ session_start();
 include('config/connect.php');
 
 
-/*
+
 $name = $email =  $password = ' ';
 if (isset($_POST['login'])) {
 
@@ -16,19 +16,16 @@ if (isset($_POST['login'])) {
     $password = mysqli_real_escape_string($conn, $password);
 
     
-    $query    = "SELECT username FROM login WHERE email='$email' AND  password='$password'"; 
+    $query    = "SELECT * FROM admin WHERE email='$email' AND  password='$password'"; 
     $result   = mysqli_query($conn, $query);
     $rows = mysqli_num_rows($result);
   
-    $name = $result->fetch_array()['username'];
-
+   
     if ($rows == 1) {
-        $_SESSION['name'] = $name; 
-        $_SESSION['email'] = $email;
-        header("Location: home.php");
+        header("Location: add.php");
     } 
 }
-*/
+
 ?>
 
 <!DOCTYPE html>
