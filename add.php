@@ -4,31 +4,44 @@ session_start();
 include('config/connect.php');
 
 
-/*
-$name = $email =  $password = ' ';
+
+$isbn = $title =  $author =  $sub = $yr = ' ';
+$msg = " ";
 if (isset($_POST['login'])) {
 
     
-    $email = stripslashes($_REQUEST['email']);
-    $email = mysqli_real_escape_string($conn, $email);
+    $isbn = stripslashes($_REQUEST['isbn']);
+    $isbn = mysqli_real_escape_string($conn, $isbn);
 
-    $password = stripslashes($_REQUEST['password']);
-    $password = mysqli_real_escape_string($conn, $password);
+    $title = stripslashes($_REQUEST['title']);
+    $title = mysqli_real_escape_string($conn, $title);
+
+    $author = stripslashes($_REQUEST['author']);
+    $author = mysqli_real_escape_string($conn, $author);
+
+    $sub = stripslashes($_REQUEST['sub']);
+    $sub = mysqli_real_escape_string($conn, $sub);
+
+    $yr = stripslashes($_REQUEST['yr']);
+    $yr = mysqli_real_escape_string($conn, $yr);
+
+    $query    = "INSERT INTO books (isbn,title,author,subject,year)VALUES('$isbn', '$title', '$author' ,'$sub', '$yr')"; 
+    $result   = mysqli_query($conn, $query);
+
 
     
-    $query    = "SELECT username FROM login WHERE email='$email' AND  password='$password'"; 
+    $query    = "SELECT * FROM books WHERE isbn='$isbn'"; 
     $result   = mysqli_query($conn, $query);
     $rows = mysqli_num_rows($result);
   
-    $name = $result->fetch_array()['username'];
 
     if ($rows == 1) {
-        $_SESSION['name'] = $name; 
-        $_SESSION['email'] = $email;
-        header("Location: home.php");
-    } 
+       $msg = "Record Added Successfully";
+    }else{
+        $msg = "Record Added Failed";
+    }
 }
-*/
+
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +65,12 @@ if (isset($_POST['login'])) {
     <br> <br>
     <h3> Add a Book </h3>
     <hr>
+
+    <?php if($msg != " ") { ?>
+    <div>
+        <p class="bg-success p-2 text-dark w-75"> <?php echo $msg; ?> </p>
+    </div>
+    <?php } ?>
 
     <form action="" method="POST" class="m-2">
                
