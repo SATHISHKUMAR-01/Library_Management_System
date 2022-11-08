@@ -55,7 +55,7 @@ if (isset($_POST['login'])) {
 
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Library Management Registration ---  Successfull';
-    $mail->Body    = "<h1>Hello .".$name."</h1><br/> Your registration for library management is successfull <br/> <h2>Your ID is : ".$user_id."<br/> Your email id : ".$email."</h2> <br/> ";
+    $mail->Body    = "<h1>Hello ".$name."</h1><br/> Your registration for library management is successfull <br/> <h2>Your ID is : ".$user_id."<br/> Your email id : ".$email."</h2> <br/> ";
 
     $mail->send();
     

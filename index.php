@@ -1,4 +1,31 @@
-<?php ?>
+<?php 
+session_start();
+include('config/connect.php');
+
+$id = $name =  $password = ' ';
+if (isset($_POST['login'])) {
+
+    
+    $id = stripslashes($_REQUEST['id']);
+    $id = mysqli_real_escape_string($conn, $id);
+
+    $password = stripslashes($_REQUEST['password']);
+    $password = mysqli_real_escape_string($conn, $password);
+
+    
+    $query    = "SELECT name FROM login WHERE user_id='$id' AND  password='$password'"; 
+    echo $query;
+    $result   = mysqli_query($conn, $query);
+    $rows = mysqli_num_rows($result);
+  
+   
+    if ($rows == 1) {
+        $_SESSION['name'] = $name; 
+        header("Location: dashboard.php");
+    } 
+}
+
+?>
 
 
 <html>
@@ -7,7 +34,7 @@
         <?php include('header.php') ?>
         <style>
             #login{
-                /* background-image: linear-gradient(to bottom, #bcf2f2, #c3f1f1, #caf0f0, #d1efef, #d7eeee); */
+               
                 background-image : url('./images/bookshelf.jpeg')
             }
             #login_Card{
