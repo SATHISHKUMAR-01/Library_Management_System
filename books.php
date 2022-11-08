@@ -1,4 +1,18 @@
-<?php ?>
+<?php
+
+session_start();
+include('config/connect.php');
+
+$name =  $_SESSION['name'];
+
+$query  = "SELECT * FROM books";
+$res = mysqli_query($conn,$query);
+$rows = array();
+while($row = mysqli_fetch_array($res))
+    $rows[] = $row;
+
+
+?>
 
 
 <html>
@@ -45,16 +59,22 @@
             </tr>
             </thead>
             <tbody>
+
+            <?php foreach($rows as $row) { ?>
+
+
             <tr>
-               <td>ISBN2345679</td>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td><span>Edinburgh</span></td>
-                <td><span class="old">61</span></td>
+               <td> <?php echo $row['isbn']; ?> </td>
+                <td> <?php echo $row['title']; ?> </td>
+                <td> <?php echo $row['author']; ?> </td>
+                <td> <?php echo $row['subject']; ?> </td>
+                <td> <?php echo $row['year']; ?> </td>
                 <td> <button class="btn btn-warning"> Borrow </button></td>
                 <td> <button class="btn btn-primary"> Add to Favorites </button></td>
                 
               </tr>
+
+              <?php } ?>
         </table>
             
             
