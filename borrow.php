@@ -3,6 +3,11 @@ session_start();
 include('config/connect.php');
 
 $name =  $_SESSION['name'];
+
+
+
+
+
 ?>
 
 

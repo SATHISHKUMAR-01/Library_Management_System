@@ -3,6 +3,15 @@ session_start();
 include('config/connect.php');
 
 $name =  $_SESSION['name'];
+
+$query  = "SELECT isbn FROM favorites where name = '$name'";
+
+$res = mysqli_query($conn,$query);
+$rows = array();
+while($row = mysqli_fetch_array($res))
+    $rows[] = $row;
+
+
  ?>
 
 
@@ -47,16 +56,36 @@ $name =  $_SESSION['name'];
             </tr>
             </thead>
             <tbody>
-            <tr>
-               <td>ISBN2345679</td>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td><span>Edinburgh</span></td>
-                <td><span class="old">61</span></td>
-                <td> <button class="btn btn-danger"> Remove from favorites</button></td>
+
+            
+            <?php foreach($rows as $row) { 
+                $ans = $row['isbn'];
+                $query  = "SELECT * FROM books where isbn = '$ans'";
                
+                $res = mysqli_query($conn,$query);
+                $news = array();
+                while($new = mysqli_fetch_array($res))
+                    $news[] = $new;
+                foreach($news as $new){
+             ?>
+             <tr>
+             <td> <?php echo $new['isbn']; ?> </td>
+                <td> <?php echo $new['title']; ?> </td>
+                <td> <?php echo $new['author']; ?> </td>
+                <td> <?php echo $new['subject']; ?> </td>
+                <td> <?php echo $new['year']; ?> </td>
+                <td> <button class="btn btn-danger"> <a href="delete.php?isbn=<?php echo $row['isbn'] ?>" class="text-decoration-none text-light" > Remove from Favorites </a> </button></td>
                 
-              </tr>
+            </tr> 
+                
+                
+            
+            <?php } } ?>
+            
+
+
+        </tbody>
+
         </table>
             
             

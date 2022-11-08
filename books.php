@@ -75,6 +75,7 @@ while($row = mysqli_fetch_array($res))
               </tr>
 
               <?php } ?>
+            </tbody>
         </table>
             
             
