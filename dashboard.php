@@ -23,6 +23,13 @@ $name =  $_SESSION['name'];
             #total_return{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
             }
+            #navlink1,#navlink2, #navlink3, #navlink4, #navlink5, #navlink6{   
+                transition: transform .2s;
+            }
+
+            #navlink1:hover, #navlink2:hover, #navlink3:hover, #navlink4:hover, #navlink5:hover, #navlink6:hover {
+                  transform: scale(1.1); 
+            }
 
     
         </style>
