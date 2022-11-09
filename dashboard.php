@@ -12,11 +12,13 @@ $name =  $_SESSION['name'];
         <title> Dashboard </title>
         <?php include('header.php') ?>
         <style>
-            #return{
+            #return, #return2{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
+                
             }
             #borrow{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
+                
             }
             #total_return{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
@@ -27,10 +29,12 @@ $name =  $_SESSION['name'];
 
         <script>
             $(document).ready(function() {
-    $('#example').DataTable( {
-        dom: 'Qlfrtip'
-    });
-});
+                $('#example').DataTable( {
+                    dom: 'Qlfrtip'
+                });
+            });
+        
+           
         </script>
 
        
@@ -47,7 +51,7 @@ $name =  $_SESSION['name'];
                     <p class="text-dark fs-6 p-1"> Books to be Return</p>
                 </div>
 
-                <div class="col card m-1 shadow" id="return">
+                <div class="col card m-1 shadow" id="return2">
                     <h5 class="card-title text-secondary" style="font-size:72px">12</h5>
                     <p class="text-dark fs-6 p-1"> Books Borrowed (this month)</p>
                 </div>
@@ -72,8 +76,7 @@ $name =  $_SESSION['name'];
            
             <p class="fs-5 text-secondary"> Pending books to be return </p>
             <hr>
-            
-
+            <br>
             <table id="example" class="display nowrap" style="width:100%">
             <thead>
             <tr> <th>ISBN No</th>

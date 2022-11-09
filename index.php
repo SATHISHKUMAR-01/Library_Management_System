@@ -42,7 +42,13 @@ if (isset($_POST['login'])) {
                 border-radius:50px;
                 display: none;
                  }
-                
+            #navlink1,#navlink2{   
+                transition: transform .2s;
+            }
+
+            #navlink1:hover, #navlink2:hover {
+                  transform: scale(1.1); 
+            }
 
     
         </style>
@@ -60,8 +66,8 @@ if (isset($_POST['login'])) {
             <br> <br> 
 
             <div class="pt-4 text-center">
-                <button class="btn-lg btn-light"> <a href="index.php" id="navlink1" class="text-decoration-none text-secondary">  Login </a> </button> 
-                <button class="btn-lg btn-secondary"> <a href="register.php" id="navlink2" class="text-decoration-none text-light">  Register </a> </button>
+                <button class="btn-lg btn-light" id="navlink1"> <a href="index.php"  class="text-decoration-none text-secondary">  Login </a> </button>   &nbsp;  &nbsp;    
+                <button class="btn-lg btn-secondary" id="navlink2"> <a href="register.php" id="navlink2" class="text-decoration-none text-light">  Register </a> </button>
             </div>
 
             <br>

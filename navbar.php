@@ -1,6 +1,22 @@
-<nav class="navbar navbar-expand-sm bg-dark text-light justify-content-between fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark text-light fixed-top">
+
+<span
+          class="navbar-brand fw-bolder  fs-5 shadow p-1"
+        ></span>
+        <button
+          class="navbar-toggler text-dark"
+          type="button" 
+          data-bs-toggle="collapse"
+          data-bs-target="#collapsibleNavbar"
+        >
+          <span class="navbar-toggler-icon bg-light text-dark"> </span>
+        </button>
+        <div
+          class="collapse navbar-collapse"
+          id="collapsibleNavbar"
+        >
   <div class="container-fluid">
-    <ul class="navbar-nav justify-content-between">
+    <ul class="navbar-nav    ">
       <li class="nav-item  rounded-pill">
         <a class="nav-link text-light fs-5" href="dashboard.php"> <i class="fa-solid fa-circle-info"></i> Dashboard  </a>
       </li> &nbsp; &nbsp; &nbsp; 
@@ -23,9 +39,9 @@
     </ul>
   </div>
 
-  <div class="justify-content-">
+  <div class="">
         <span class="fs-6"> Welcome <?php echo $name; ?>!</span>
     </div>
     <a class="nav-link text-light float-end text-warning fs-3" href="logout.php">  <i class="fa-solid fa-arrow-right-from-bracket"></i></a>
- 
+</div>
 </nav>
