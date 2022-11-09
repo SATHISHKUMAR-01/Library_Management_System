@@ -30,6 +30,8 @@ while($row = mysqli_fetch_array($res))
     while($row = mysqli_fetch_array($res))
         $years[] = $row;
             
+
+
         
 
 ?>
@@ -39,10 +41,37 @@ while($row = mysqli_fetch_array($res))
     <head>
         <title> More Info</title>
         <?php include('header.php') ?>
+
         <style>
-           
-    
+            
         </style>
+        
+        <script>
+            $(document).ready(function(){
+  $("#title_button").click(function(){
+    $("#title").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#author_button").click(function(){
+    $("#author").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#subject_button").click(function(){
+    $("#subject").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#year_button").click(function(){
+    $("#year").slideToggle("slow");
+  });
+});
+
+        </script>
 
        
             
@@ -55,10 +84,30 @@ while($row = mysqli_fetch_array($res))
         <br><br><br> 
         <div class="container">
             
-        <br> 
+     
         <div class="row">
+          
+        <br><br>
+            <div class="col">
+            <button class="btn-sm btn-outline-dark  " id="author_button"> Show/Hide Author Details </button>
+            </div>
+            <div class="col">
+            <button class="btn-sm btn-outline-dark " id="title_button"> Show/Hide Title Details </button>
+            </div>
+            <div class="col">
+            <button class="btn-sm btn-outline-dark " id="subject_button"> Show/Hide Subject Details </button>
+            </div>
+            <div class="col">
+            <button class="btn-sm btn-outline-dark " id="year_button"> Show/Hide Published Year Details </button>
+            </div>
+        </div>
 
-        <div class="col m-1 card p-2">
+
+
+        
+        <div id="info">
+        <div class="row">
+        <div class="col m-1 card p-2" id="title">
         <p class="fs-4 text-secondary pt-2"> Title </p>
         <hr>
         <table class="table">
@@ -82,7 +131,7 @@ while($row = mysqli_fetch_array($res))
         </table>
         </div>
 
-        <div class="col  m-1 card p-2">
+        <div class="col  m-1 card p-2" id="subject">
         <p class="fs-4 text-secondary pt-2"> Subject </p>
         <hr>
         <table class="table">
@@ -111,7 +160,7 @@ while($row = mysqli_fetch_array($res))
 
         <div class="row">
 
-        <div class="col m-1 card p-2">
+        <div class="col m-1 card p-2" id="author">
         <p class="fs-4 text-secondary pt-2"> Author </p>
         <hr>
         <table class="table">
@@ -135,7 +184,7 @@ while($row = mysqli_fetch_array($res))
         </table>
         </div>
 
-        <div class="col m-1 card p-2">
+        <div class="col m-1 card p-2" id="year">
         <p class="fs-4 text-secondary pt-2"> Published Year </p>
         <hr>
         <table class="table">
@@ -159,7 +208,9 @@ while($row = mysqli_fetch_array($res))
         </table>
         </div>
 
+
         </div>
+              </div>
 
 
       
