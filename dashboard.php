@@ -14,14 +14,15 @@ $name =  $_SESSION['name'];
         <style>
             #return, #return2{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
-                
+                display:none;
             }
             #borrow{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
-                
+                display:none;
             }
             #total_return{
                 background-image: linear-gradient(to bottom, #cff4f6, #c4e0e2, #b8cccf, #adb9bb, #a1a6a7);
+                display:none;
             }
             
     
@@ -33,6 +34,16 @@ $name =  $_SESSION['name'];
                     dom: 'Qlfrtip'
                 });
             });
+
+            $(window).ready(function(){
+            $("#borrow").slideDown(1000);
+            $("#return").slideDown(1000);
+            $("#return2").slideDown(1000);
+            $("#total_return").slideDown(1000);
+            
+                
+        });
+
         
            
         </script>
