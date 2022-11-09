@@ -1,7 +1,8 @@
 
 Library Management System
 
-Frontend - HTML,CSS BOOTSTRAP, JQUERY
+Frontend - HTML,CSS, BOOTSTRAP, JQUERY 
+
 Backend  - PHP, MySQL
 
 User Function:
