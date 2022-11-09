@@ -74,6 +74,12 @@ while($row = mysqli_fetch_array($res))
         dom: 'Qlfrtip'
     });
 });
+
+$(document).ready(function(){
+  $("#click").click(function(){
+    $("#book_added").slideToggle("slow");
+  });
+});
       
     </script>
     
@@ -84,15 +90,11 @@ while($row = mysqli_fetch_array($res))
     <div class="container text-light">
  
     <br> <br>
-    <h3> Add a Book  </h3>
+    <h3> Add a Book <button class="btn text-light fs-3  " id="click"><i class="fa-solid fa-circle-plus"></i></button> </h3>
     <hr>
 
     <div id="book_added">
-    <?php if($msg != " ") { ?>
-    <div>
-        <p class="bg-success p-2 text-dark w-75"> <?php echo $msg; ?> </p>
-    </div>
-    <?php } ?>
+    
 
     <form action="" method="POST" class="m-2">
                
@@ -134,6 +136,12 @@ while($row = mysqli_fetch_array($res))
     </form>
     </div>
 
+    <?php if($msg != " ") { ?>
+    <div>
+        <p class="bg-success p-2 text-dark w-75"> <?php echo $msg; ?> </p>
+    </div>
+    <?php } ?>
+    
     <div class="bg-light p-3">
     <p class="fs-4 text-secondary pt-2 text-center"> List of Books Available </p>
     <table id="books" class="display nowrap text-dark" style="width:100%">
