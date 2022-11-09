@@ -115,7 +115,7 @@ while($row = mysqli_fetch_array($res))
                 <option value="2002">2002</option>
              </select>
 
-             <input type="submit" value="Filter" id="login" name="login" class="btn col btn-secondary text-light shadow-sm">
+             <input type="submit" value="Filter" id="login" name="login" class="btn col m-1 btn-secondary text-light shadow-sm">
                         
         </form>
 

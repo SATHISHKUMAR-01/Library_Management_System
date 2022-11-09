@@ -7,6 +7,7 @@ include('config/connect.php');
 
 $isbn = $title =  $author =  $sub = $yr = ' ';
 $msg = " ";
+
 if (isset($_POST['login'])) {
 
     
@@ -42,6 +43,12 @@ if (isset($_POST['login'])) {
     }
 }
 
+$query  = "SELECT * FROM books";
+$res = mysqli_query($conn,$query);
+$books = array();
+while($row = mysqli_fetch_array($res))
+    $books[] = $row;
+
 ?>
 
 <!DOCTYPE html>
@@ -53,8 +60,22 @@ if (isset($_POST['login'])) {
         #add_body{
             background-image: linear-gradient(to right, #292a2a, #273333, #233c3d, #1d4647, #0f4f51);
         }
+
+        #book_added{
+            display:none;
+        }
         
     </style>
+
+    <script>
+      
+            $(document).ready(function() {
+    $('#books').DataTable( {
+        dom: 'Qlfrtip'
+    });
+});
+      
+    </script>
     
         
     
@@ -63,9 +84,10 @@ if (isset($_POST['login'])) {
     <div class="container text-light">
  
     <br> <br>
-    <h3> Add a Book </h3>
+    <h3> Add a Book  </h3>
     <hr>
 
+    <div id="book_added">
     <?php if($msg != " ") { ?>
     <div>
         <p class="bg-success p-2 text-dark w-75"> <?php echo $msg; ?> </p>
@@ -110,9 +132,47 @@ if (isset($_POST['login'])) {
 
                
     </form>
-       
+    </div>
+
+    <div class="bg-light p-3">
+    <p class="fs-4 text-secondary pt-2 text-center"> List of Books Available </p>
+    <table id="books" class="display nowrap text-dark" style="width:100%">
+            <thead>
+            <tr> <th>ISBN No</th>
+                <th>Title</th>
+                <th>Author</th>
+               
+                <th>Subject</th>
+                <th>Publish Date</th>
+                <th> </th>
+                
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php foreach($books as $row) { ?>
+
+
+            <tr>
+               <td> <?php echo $row['isbn']; ?> </td>
+                <td> <?php echo $row['title']; ?> </td>
+                <td> <?php echo $row['author']; ?> </td>
+                <td> <?php echo $row['subject']; ?> </td>
+                <td> <?php echo $row['year']; ?> </td>
+          
+                <td> <button class="btn btn-danger"> <a href="remove.php?isbn=<?php echo $row['isbn'] ?>" class="text-decoration-none text-light" > Remove </a> </button></td>
+                
+              </tr>
+
+              <?php } ?>
+            </tbody>
+        </table>
+            
+        </div>
        
     </div>
+
+    <br>
     
    
 </body>
