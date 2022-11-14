@@ -2,6 +2,11 @@
 session_start();
 include('config/connect.php');
 
+if($_SESSION['valid'] == 0){
+     
+    header("Location: index.php");
+}
+
 $name =  $_SESSION['name'];
 ?>
 
@@ -43,7 +48,7 @@ $name =  $_SESSION['name'];
                 <th>Author</th>
                
                 <th>Subject</th>
-                <th>Publish Date</th>
+                <th>Published Year</th>
                 <th>  </th>
                
             </tr>

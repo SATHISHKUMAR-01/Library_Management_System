@@ -4,6 +4,13 @@ include('config/connect.php');
 
 $name =  $_SESSION['name'];
 
+
+if($_SESSION['valid'] == 0){
+     
+    header("Location: index.php");
+}
+
+
 ?>
 
 
@@ -54,6 +61,9 @@ $name =  $_SESSION['name'];
     <body >
         <?php include('navbar.php') ?>
         <br><br><br> 
+
+
+        <!-- Session valid = <?php echo $_SESSION['valid']; ?> -->
         <div class="container">
             <div class="w-100 mx-auto row m-1">
 

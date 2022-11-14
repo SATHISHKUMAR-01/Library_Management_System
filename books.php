@@ -3,6 +3,11 @@
 session_start();
 include('config/connect.php');
 
+if($_SESSION['valid'] == 0){
+     
+    header("Location: index.php");
+}
+
 $name =  $_SESSION['name'];
 
 $query  = "SELECT * FROM books";
@@ -65,11 +70,18 @@ while($row = mysqli_fetch_array($res))
 
        
             <script>
+              
             $(document).ready(function() {
-    $('#books').DataTable( {
-        dom: 'Qlfrtip'
-    });
-});
+                $('#books').DataTable( {
+                    dom: 'Qlfrtip',
+                    info: true
+                });
+            });
+
+             function display(word) {
+  alert("The " + word + " book has been added to the favorites");
+}
+           
         </script>
        
        
@@ -127,7 +139,7 @@ while($row = mysqli_fetch_array($res))
                 <th>Author</th>
                
                 <th>Subject</th>
-                <th>Publish Date</th>
+                <th>Published Year</th>
                 <th> </th>
                 <th> </th>
             </tr>
@@ -144,13 +156,16 @@ while($row = mysqli_fetch_array($res))
                 <td> <?php echo $row['subject']; ?> </td>
                 <td> <?php echo $row['year']; ?> </td>
                 <td> <button class="btn btn-warning"> Borrow </button></td>
-                <td> <button class="btn btn-primary"> <a href="update.php?isbn=<?php echo $row['isbn'] ?>" class="text-decoration-none text-light" > Add to Favorites </a> </button></td>
-                
+                <td> <button onclick="display('<?php echo $row['title']; ?>' )" class="btn btn-primary" > <a href="update.php?isbn=<?php echo $row['isbn'] ?>" class="text-decoration-none text-light" id="toast" > Add to Favorites </a> </button></td>
+        
               </tr>
 
               <?php } ?>
             </tbody>
         </table>
+
+        
+        
             
             
 

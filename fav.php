@@ -4,6 +4,11 @@ include('config/connect.php');
 
 $name =  $_SESSION['name'];
 
+if($_SESSION['valid'] == 0){
+     
+    header("Location: index.php");
+}
+
 $query  = "SELECT isbn FROM favorites where name = '$name'";
 
 $res = mysqli_query($conn,$query);

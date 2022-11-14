@@ -4,6 +4,10 @@ include('config/connect.php');
 
 $name =  $_SESSION['name'];
 
+if($_SESSION['valid'] == 0){
+     
+    header("Location: index.php");
+}
 
 
 
@@ -48,7 +52,7 @@ $name =  $_SESSION['name'];
                 <th>Author</th>
                
                 <th>Subject</th>
-                <th>Publish Date</th>
+                <th>Published Year</th>
                 <th>  </th>
                
             </tr>

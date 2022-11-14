@@ -3,6 +3,11 @@
 session_start();
 include('config/connect.php');
 
+if($_SESSION['valid'] == 0){
+     
+  header("Location: index.php");
+}
+
 $name =  $_SESSION['name'];
 
 $query  = "SELECT title, COUNT(*) AS count FROM books GROUP BY title";

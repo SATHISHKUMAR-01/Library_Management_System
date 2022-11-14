@@ -2,7 +2,11 @@
 session_start();
 include('config/connect.php');
 
+$_SESSION['valid'] = 0;
+
 $id = $name =  $password = ' ';
+
+
 if (isset($_POST['login'])) {
 
     
@@ -22,8 +26,13 @@ if (isset($_POST['login'])) {
 
     if ($rows == 1) {
         $_SESSION['name'] = $name; 
+        $_SESSION['valid'] = 1;
         header("Location: dashboard.php");
-    } 
+    }else{
+        header("Location: index.php");
+    }
+
+
 }
 
 ?>

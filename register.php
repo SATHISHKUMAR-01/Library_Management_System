@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 include('config/connect.php');
 
 
@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\SMTP;
 require './vendor/autoload.php';
 $mail = new PHPMailer(true);
 
-
+$msg = '';
 $name = $email =  $password = $conf_password = $user_id = ' ';
 if (isset($_POST['login'])) {
 
@@ -45,12 +45,12 @@ if (isset($_POST['login'])) {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = '';                     //SMTP username
-    $mail->Password   = '';                               //SMTP password
+    $mail->Username   = 'sathishkandavel10@gmail.com';                     //SMTP username
+    $mail->Password   = 'quomhdxtnqededkv';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption PHPMailer::ENCRYPTION_SMTPS
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    $mail->setFrom('', 'Admin - Library Management');
+    $mail->setFrom('sathishkandavel10@gmail.com', 'Admin - Library Management');
     $mail->addAddress($email, $name);     //Add a recipient
 
     $mail->isHTML(true);                                  //Set email format to HTML
@@ -58,11 +58,11 @@ if (isset($_POST['login'])) {
     $mail->Body    = "<h1>Hello ".$name."</h1><br/> Your registration for library management is successfull <br/> <h2>Your ID is : ".$user_id."<br/> Your email id : ".$email."</h2> <br/> ";
 
     $mail->send();
-    $_SESSION['name'] = $name; 
-    header("Location: dashboard.php");
-
+   
+     $msg = "Registration Successful. Log in with your User ID sent to your mail";
+    
     }else{
-        header("Location: register.php");
+        $msg = "Registration Failed";
     }
 }
 
@@ -116,7 +116,14 @@ if (isset($_POST['login'])) {
                 </div>
                 <div class="col-6 p-2">
                     
-                    <h1 class="fs-1 text-center text-secondary">Let's gain Knowledge <i class="fa-solid fa-book"></i> </h1> 
+                    <h1 class="fs-1 text-center text-secondary">Let's gain Knowledge <i class="fa-solid fa-book"></i> </h1>
+                    
+                    <?php if($msg != ''){ ?>
+                        <p class="alert alert-success" role="alert">
+                            <?php echo $msg; ?>
+                        </p>
+                    <?php } ?>
+                    
                  <br>
                     <form action="" method="POST" class="m-2">
                     
@@ -156,6 +163,6 @@ if (isset($_POST['login'])) {
 
 
         </div>
-        
+        <br><br>
     </body>
 </html>
