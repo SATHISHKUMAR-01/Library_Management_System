@@ -45,12 +45,12 @@ if (isset($_POST['login'])) {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'sathishkandavel10@gmail.com';                     //SMTP username
-    $mail->Password   = 'zklgcjkwsgwaqiuc';                               //SMTP password
+    $mail->Username   = '';                     //SMTP username
+    $mail->Password   = '';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption PHPMailer::ENCRYPTION_SMTPS
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
-    $mail->setFrom('sathishkandavel10@gmail.com', 'Admin - Library Management');
+    $mail->setFrom('', 'Admin - Library Management');
     $mail->addAddress($email, $name);     //Add a recipient
 
     $mail->isHTML(true);                                  //Set email format to HTML
