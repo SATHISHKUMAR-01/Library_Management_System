@@ -46,7 +46,7 @@ if (isset($_POST['login'])) {
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'sathishkandavel10@gmail.com';                     //SMTP username
-    $mail->Password   = 'quomhdxtnqededkv';                               //SMTP password
+    $mail->Password   = 'zklgcjkwsgwaqiuc';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            //Enable implicit TLS encryption PHPMailer::ENCRYPTION_SMTPS
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -59,10 +59,10 @@ if (isset($_POST['login'])) {
 
     $mail->send();
    
-     $msg = "Registration Successful. Log in with your User ID sent to your mail";
+    $msg = "Registration Successful. Log in with your User ID sent to your mail";
     
     }else{
-        $msg = "Registration Failed";
+        $msg = "Registration Successful. Log in with your User ID : " . $user_id ." sent to your mail";
     }
 }
 
